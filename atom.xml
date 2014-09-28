@@ -4,7 +4,7 @@
   <title><![CDATA[Li Dong's Blog]]></title>
   <link href="http://twlidong.github.io/atom.xml" rel="self"/>
   <link href="http://twlidong.github.io/"/>
-  <updated>2014-09-28T23:36:14+08:00</updated>
+  <updated>2014-09-28T23:38:02+08:00</updated>
   <id>http://twlidong.github.io/</id>
   <author>
     <name><![CDATA[lidong]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Protocol Relative URLs or Protocol-less URLs(协议相关URL/无协议头的URL)]]></title>
+    <title type="html"><![CDATA[Protocol relative  URLs or Protocol-less URLs(协议相关URL/无协议头的URL)]]></title>
     <link href="http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/"/>
     <updated>2014-02-24T22:15:18+08:00</updated>
     <id>http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url</id>
@@ -341,7 +341,7 @@ CORS的背后基本思想就是使用自定义的HTTP头部让浏览器与服务
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[我不知道的URL Encode]]></title>
+    <title type="html"><![CDATA[我不知道的URL encode]]></title>
     <link href="http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/"/>
     <updated>2013-12-11T22:42:10+08:00</updated>
     <id>http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode</id>
