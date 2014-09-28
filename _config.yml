@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://twlidong.github.io/
+title: Li Dong's Blog
+subtitle: Record what I thought.
+author: lidong
 simple_search: https://www.google.com/search
 description:
 
