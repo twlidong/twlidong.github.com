@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Protocol Relative URLs or Protocol-less URLs(协议相关URL/无协议头的URL) - Li Dong&#8217;s Blog</title>
+  <meta name="author" content="lidong">
+
+  
+  <meta name="description" content="1
+&lt;img src="//domain.com/img/logo.png"&gt; 也许这样的一个URL第一眼看去我们会无节操的骂去，谁***把协议头都忘了写了！！ 当爆出粗口的刹那间，“年少无知”也许就成了最优雅的形容词。 当再看到这段 1
+2
+3
+4
+5 @font-face { &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Li Dong's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Li Dong&#8217;s Blog</a></h1>
+  
+    <h2>Record what I thought.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:twlidong.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Protocol Relative URLs or Protocol-less URLs(协议相关URL/无协议头的URL)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-24T22:15:18+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:15 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;img src="//domain.com/img/logo.png"&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也许这样的一个URL第一眼看去我们会无节操的骂去，谁***把协议头都忘了写了！！ 当爆出粗口的刹那间，“年少无知”也许就成了最优雅的形容词。</p>
+
+<p>当再看到这段</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> @font-face {
+</span><span class='line'>   font-family: 'Roboto';
+</span><span class='line'>   font-style: italic;
+</span><span class='line'>   src: url('//themes.googleusercontent.com/font?kit=biUEjW7P-lfzIZFXrcy-wQ') format('woff');
+</span><span class='line'> }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>的时候，也许已经开始胆怯了。。。</p>
+
+<p>没错，这也许就是一种你不曾知道的URL。<a href="http://tools.ietf.org/html/rfc3986#section-4.2">RFC 3986</a>
+Protocol relative URLs 是指如果浏览器中请求页面的的协议是HTTPS，那么对于像 &ldquo;//domain.com/img/logo.png&rdquo; 这样的URL将同样用HTTPS来请求资源，同理如果是HTTP的话，这个URL将会变为&#8221;<a href="http://domain.com/img/logo.png">http://domain.com/img/logo.png</a>&#8220;。那么对于这样的规范，有什么用处呢？下面我举一个栗子:</p>
+
+<p>你有一个仅支持http请求的应用，突然有一天需要同时支持http和https, 当你想当然的在web服务器中打开ssl端口的时候，一请求页面发现样式乱了，顿时就慌了。才意识到浏览器中诸如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The page at ‘https://a.example.com/1' was loaded over HTTPS, but displayed insecure content from
+</span><span class='line'>'http://staic.style.com/static/img/logo.png': this content should also be loaded over HTTPS.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样的警告。</p>
+
+<p>一个支持https请求的网站，应确保所有的内容都是用https加载的，从而防止如上的<a href="https://blog.servertastic.com/firefox-23-to-block-mixed-content/">mixed content warnings</a>。
+当赶紧去把代码中数之不尽hard code的http改为https的时候，可能顿时就一边改一边还窃喜自己顿时就能解决这个问题的时候, 不知又悄悄的引入了一些“不便之处”：当页面是被标准的http请求时，这些被改成https协议的资源，不得不在此时依然通过ssl去连接请求https外部资源。</p>
+
+<p>同时支持http和https，怎样让自己的代码更自然简洁一些，当然是使用 Protocol relative URL。</p>
+
+<p>很简单，不用去管协议，就像这样</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>//some-domain.com/path/to/resource</span></code></pre></td></tr></table></div></figure>
+
+
+<p>好了，不再有mixed content警告，可以确定任何放在src和href属性中的url都会被浏览器可靠的处理。同时免去了你使用 (request.protocol / request.scheme 或者 window.location.protocol) 去解析请求的协议。</p>
+
+<p>此时，有没有顿然暗爽~</p>
+
+<p><strong>但是，要注意的是：</strong></p>
+
+<ol>
+<li>例如存放 js 和 css 文件这样的静态服务器不同时支持https或者是http, 会有潜在的风险~ 比如google analytics曾经就对http和https分别用不同的subdomain来对待， 一个为 <a href="http://www.google-analytics.com/ga.js,">http://www.google-analytics.com/ga.js,</a> 一个为<a href="https://ssl.google-analytics.com/ga.js">https://ssl.google-analytics.com/ga.js</a></li>
+<li>如果你打算支持IE6的话，它会在IE6下不知所措。</li>
+<li>还有倘若留意一下上面的写法在IE8下面请求一个样式文件的表现的话，你可能会更失望，请求了两次！！（一次http，一次https）不过你决定抛弃IE8的话，那就忽略这条。详细请参考<a href="http://www.stevesouders.com/blog/2010/02/10/5a-missing-schema-double-download/">http://www.stevesouders.com/blog/2010/02/10/5a-missing-schema-double-download/</a></li>
+<li>http请求和https请求可能会留有两份不同的cache。</li>
+<li>一些邮件客户端（特别是outlook）将不会以为它是http或者https协议，而是会以为是本机上的资源从而使用file://协议</li>
+</ol>
+
+
+<p><strong>倘若这些都不是问题，那就尝试一下Protocol relative URL</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">lidong</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-02-24T22:15:18+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:15 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/" data-via="" data-counturl="http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/" title="Previous Post: 跨源资源共享 Cross Origin Resource Sharing(CORS)">&laquo; 跨源资源共享 Cross Origin Resource Sharing(CORS)</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/">Protocol Relative URLs or Protocol-less URLs(协议相关URL/无协议头的URL)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/">跨源资源共享 Cross Origin Resource Sharing(CORS)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/">我不知道的URL Encode</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - lidong -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

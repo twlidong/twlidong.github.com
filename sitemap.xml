@@ -2,17 +2,41 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   
+  <url>
+    <loc>http://twlidong.github.io/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/</loc>
+    
+    <lastmod>2014-02-24T22:15:18+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://twlidong.github.io/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/</loc>
+    
+    <lastmod>2013-12-22T20:37:12+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/</loc>
+    
+    <lastmod>2013-12-11T22:42:10+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
   
   <url>
     <loc>http://twlidong.github.io/blog/archives/</loc>
-    <lastmod>2014-09-28T23:31:41+08:00</lastmod>
+    <lastmod>2014-09-28T23:33:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://twlidong.github.io/</loc>
-    <lastmod>2014-09-28T23:31:41+08:00</lastmod>
+    <lastmod>2014-09-28T23:33:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

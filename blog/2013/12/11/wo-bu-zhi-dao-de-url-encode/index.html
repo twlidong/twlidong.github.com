@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>我不知道的URL Encode - Li Dong&#8217;s Blog</title>
+  <meta name="author" content="lidong">
+
+  
+  <meta name="description" content="为什么使用URL encoding? URL在Internet中传输只能是ASCII字符集，正是由于在URL中往往包含很多非ASCII字符之外的字符，才需要将它转化。通常会用“%”和两个十六进制的数字去替换非法的ASCII字符(percent_encode)。 当输入到HTML &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Li Dong's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Li Dong&#8217;s Blog</a></h1>
+  
+    <h2>Record what I thought.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:twlidong.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">我不知道的URL Encode</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T22:42:10+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:42 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>为什么使用URL encoding?</h3>
+
+<p>URL在Internet中传输只能是ASCII字符集，正是由于在URL中往往包含很多非ASCII字符之外的字符，才需要将它转化。通常会用“%”和两个十六进制的数字去替换非法的ASCII字符(percent_encode)。</p>
+
+<p>当输入到HTML form表单中的数据被提交的时候，表单中的名字，值都会被编码通过http请求GET, POST等发送给服务器端，默认的编码方式是基于早期版本的general URI perccent-encoding规则以及一些改进。通过这种形式编码的数据的MIME格式是 application/x-www-form-urlencoded。当发送的是HTTP GET请求的时候，application/x-www-form-urlencoded包含在请求URI的query部分。当发送的是HTTP POST请求时，数据本身被放在信息的body中，media-type放在信息的Content-Type header中。</p>
+
+<h3>General URL Sytanx</h3>
+
+<p>对于URL: <a href="https://www.example.com:8080/file;p=1?q=2#third">https://www.example.com:8080/file;p=1?q=2#third</a></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Part</strong> </th>
+<th style="text-align:center;"> <strong>Data</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheme </td>
+<td style="text-align:center;"> https</td>
+</tr>
+<tr>
+<td>Host </td>
+<td style="text-align:center;"> www.example.com</td>
+</tr>
+<tr>
+<td>Port </td>
+<td style="text-align:center;"> 8080</td>
+</tr>
+<tr>
+<td>Path </td>
+<td style="text-align:center;"> file</td>
+</tr>
+<tr>
+<td>Path parameters  </td>
+<td style="text-align:center;">   p=1</td>
+</tr>
+<tr>
+<td>Query parameters </td>
+<td style="text-align:center;">   q=2</td>
+</tr>
+<tr>
+<td>Fragment </td>
+<td style="text-align:center;"> third</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>URL grammar</h3>
+
+<p>对于URL是如何组装和如何分割，是有着一定的语法。比如，”://“ 是分割scheme和host, ”/“是分割host和path fragment, query通常跟着”?“之后。这就意味着特定的某些字符会因为语法的需求而被保留。有些是针对所有的URI都保留，有些则是针对某些scheme。所有这些被保留的字符是如果是出现在不被允许使用的地方就需要URL encoded。举个例子”?“如果出现在path fragment中就需要被转换成”%3F“, 从而使它不具备了句法含义(syntactic meaning)。&#8221;<a href="http://www.example.com/to_be_or_not_to_be?.jpg">http://www.example.com/to_be_or_not_to_be?.jpg</a>&#8220;转换成&#8221;<a href="http://www.example.com/to_be_or_not_to_be%3F.jpg">http://www.example.com/to_be_or_not_to_be%3F.jpg</a>&#8221;, 而不会被误认为&#8221;?&ldquo;在这里是一个query部分。</p>
+
+<p><strong>The unreserved characters can be encoded, but should not be encoded. The unreserved characters are:</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+</span><span class='line'>a b c d e f g h i j k l m n o p q r s t u v w x y z
+</span><span class='line'>0 1 2 3 4 5 6 7 8 9 - _ . ~</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>The reserved characters have to be encoded only under certain circumstances. The reserved characters are:</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>! * ' ( ) ; : @ & = + $ , / ? % # [ ]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Pitfalls</h3>
+
+<ul>
+<li><p><strong>保留字符并不是你想象中的那样被编码</strong></p>
+
+<ul>
+<li><p>&ldquo;?&#8221;若在query部分可以不被转义</p></li>
+<li><p>&ldquo;/&rdquo; 若在query部分可以不被转义</p></li>
+<li><p>&ldquo;=&rdquo; 若在path parameter或query parameter部分或者是path segment中可以不被转义</p></li>
+<li><p>&ldquo;:@-._~!$&amp;&lsquo;()*+,;=&rdquo; 若在path segment中将可以不被转义</p></li>
+<li><p>&ldquo;/?:@-._~!$&amp;&lsquo;()*+,;=&rdquo; 若在fragment部分将可以不被转义</p></li>
+</ul>
+</li>
+<li><p><strong>保留字符在URL不同的部分会被不同的对待</strong></p>
+
+<p>&ldquo; &rdquo;(空格)在path fragment部分被编码成&#8221;%20&#8221;(绝对不是&#8221;+&ldquo;),而&rdquo;+&ldquo;会被保留, 不会被编码。而&rdquo; &ldquo;(空格)在query部分可能会被编码成&rdquo;+&ldquo;(为了向后兼容)或者是&rdquo;%20&#8221;, 然而&#8221;+&ldquo;则会被转义成&rdquo;%2B&#8221;。、</p></li>
+</ul>
+
+
+<hr />
+
+<p><strong>实践小结：在ruby中我们经常使用的URL encode的方法大致有三种</strong></p>
+
+<ul>
+<li>URI.escape()是替换掉不安全的字符,但是转义出来的URL在query部分含有&#8221;+&ldquo;并不能和上述标准十分相符,而URI.encode()是URI::Escape#escape的别名</li>
+<li>CGI.escape()本义是对HTML form表单请求做转义，它的转义比较彻底，看起来也比较残暴（但是也相当好用）,最起码能保证编码出来的URL肯定是合法的</li>
+<li>当和URIs打交道, 也可以使用Addressable, 它提供了url encoding, form encoding 和 normalizes URLs.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">URI</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;www.example.com/François+?a=3+4&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;www.example.com/Fran%C3%A7ois+?a=3+4”</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&ldquo;+&#8221;该被编码的</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s2">&quot;www.example.com/François+?a=3+4”)</span>
+</span><span class='line'><span class="s2">=&gt; &quot;</span><span class="n">www</span><span class="o">.</span><span class="n">hel</span><span class="o">.</span><span class="n">com</span><span class="o">%</span><span class="mi">2</span><span class="no">FFran</span><span class="o">%</span><span class="no">C3</span><span class="o">%</span><span class="no">A7ois</span><span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">%</span><span class="mi">3</span><span class="no">Fa</span><span class="o">%</span><span class="mi">3</span><span class="no">D3</span><span class="o">%</span><span class="mi">2</span><span class="no">B4</span><span class="err">”</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>看起来几乎所有的保留字符都被编码了</p>
+
+<p>引用:【<a href="http://blog.lunatech.com/2009/02/03/what-every-web-developer-must-know-about-url-encoding">http://blog.lunatech.com/2009/02/03/what-every-web-developer-must-know-about-url-encoding</a> 】</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">lidong</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T22:42:10+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:42 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/" data-via="" data-counturl="http://twlidong.github.io/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/" title="Next Post: 跨源资源共享 Cross Origin Resource Sharing(CORS)">跨源资源共享 Cross Origin Resource Sharing(CORS) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/24/protocol-relative-urls-or-protocol-less-urls-xie-yi-xiang-guan-url-slash-wu-xie-yi-tou-de-url/">Protocol Relative URLs or Protocol-less URLs(协议相关URL/无协议头的URL)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/">跨源资源共享 Cross Origin Resource Sharing(CORS)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/11/wo-bu-zhi-dao-de-url-encode/">我不知道的URL Encode</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - lidong -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
